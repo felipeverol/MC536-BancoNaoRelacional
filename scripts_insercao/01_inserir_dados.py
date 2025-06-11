@@ -1,5 +1,4 @@
 import duckdb
-import pandas as pd
 import os
 
 # --- Configurações ---
@@ -43,7 +42,7 @@ try:
         nu_media_lp_enem,
         nu_media_mt_enem,
         nu_media_red_enem
-    FROM read_csv_auto('{ENEM_CSV_PATH}', header=True, sep=';')
+    FROM read_csv('{ENEM_CSV_PATH}', header=True, sep=';')
     
     """
 
@@ -51,10 +50,6 @@ try:
     print("Carga para 'dim_escola_indicadores_anuais' concluída.")
 except Exception as e:
     print(f"Erro ao carregar dados do ENEM: {e}")
-
-# Em 01_inserir_dados.py
-
-# Em 01_inserir_dados.py
 
 # --- Carga para fato_aluno_trajetoria ---
 print("\nIniciando a carga para a tabela 'fato_aluno_trajetoria'...")
@@ -106,7 +101,7 @@ try:
         vl_salario_contratual,
         uf_vinculo,
         municipio_vinculo
-    FROM read_csv_auto('{TRABALHO_CSV_PATH}', header=True, sep=';')
+    FROM read_csv('{TRABALHO_CSV_PATH}', header=True, sep=';')
     
     -- Cláusula para ignorar duplicatas baseadas no id_aluno
     ON CONFLICT (id_aluno) DO NOTHING;
