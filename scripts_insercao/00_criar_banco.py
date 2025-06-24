@@ -9,7 +9,7 @@ con = duckdb.connect(db_path)
 # Cria a tabela fato_aluno_trajetoria
 con.execute("""
 CREATE TABLE IF NOT EXISTS fato_aluno_trajetoria (
-    id_aluno INTEGER PRIMARY KEY,
+    id_aluno INTEGER,
     data_nascimento DATE,
     idade INTEGER,
     sexo VARCHAR,

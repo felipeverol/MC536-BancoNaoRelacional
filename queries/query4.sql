@@ -3,14 +3,17 @@
 -- O objetivo é verificar se há uma correlação entre a evasão escolar e a permanência no primeiro emprego.
 -- A análise foca nos alunos que ingressaram entre 2009 e 2015.
 
-WITH dados_analise AS (
-    -- Seleciona os dados de alunos que entraram em um período específico e tiveram um vínculo empregatício encerrado.
-    -- Junta com os indicadores da escola para obter a taxa de abandono do ano de ingresso.
+WITH dados_analise_completo AS (
     SELECT
         fat.id_aluno,
         fat.ano_entrada_ifb,
         fat.tempo_emprego,
-        deia.nu_taxa_abandono
+        fat.data_admissao_declarada,
+        deia.nu_taxa_abandono,
+        ROW_NUMBER() OVER (
+            PARTITION BY fat.id_aluno
+            ORDER BY fat.data_admissao_declarada DESC  
+        ) AS ordem_emprego
     FROM
         fato_aluno_trajetoria fat
     JOIN
@@ -18,15 +21,18 @@ WITH dados_analise AS (
                                            AND fat.ano_entrada_ifb = deia.nu_ano
     WHERE
         fat.ano_entrada_ifb BETWEEN 2009 AND 2015
-        -- Filtra por um campus específico do IFB, como no script original
         AND fat.co_escola_educacenso = '53006178'
-        -- Considera apenas vínculos que foram desligados
         AND fat.motivo_desligamento IS NOT NULL AND fat.motivo_desligamento != 'NAO DESLIGADO NO ANO'
         AND fat.tempo_emprego IS NOT NULL
         AND deia.nu_taxa_abandono IS NOT NULL
+),
+
+primeiro_emprego AS (
+    SELECT *
+    FROM dados_analise_completo
+    WHERE ordem_emprego = 1
 )
 
--- Categoriza o tempo de emprego e a taxa de abandono em faixas (BAIXA, MEDIA, ALTA)
 SELECT
     id_aluno,
     ano_entrada_ifb,
@@ -41,4 +47,6 @@ SELECT
         ELSE 'ALTA'
     END AS categoria_abandono_escolar
 FROM
-    dados_analise;
+    primeiro_emprego
+ORDER BY
+    id_aluno;

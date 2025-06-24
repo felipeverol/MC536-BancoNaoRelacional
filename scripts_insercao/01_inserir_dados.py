@@ -103,8 +103,6 @@ try:
         municipio_vinculo
     FROM read_csv('{TRABALHO_CSV_PATH}', header=True, sep=';')
     
-    -- Cláusula para ignorar duplicatas baseadas no id_aluno
-    ON CONFLICT (id_aluno) DO NOTHING;
     """
 
     con.execute(query)
