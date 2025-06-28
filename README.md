@@ -23,7 +23,7 @@ Aqui estão os modelos criados para o melhor entendimento de como deve ser o fun
 ![Modelo Conceitual do Banco de Dados](modelos/modelo_conceitual.png) 
 
 ### Modelo Lógico
-![Modelo Relacional do Banco de Dados](modelos/modelo_logico.png)
+![Modelo Relacional do Banco de Dados](modelos/modelo_logico.PNG)
 
 ### Modelo Físico
 O SQL do modelo físico está no reposítorio, podendo ser encontrado no diretório [modelos/modelo_fisico_duckdb_v2.sql](modelos/modelo_fisico_duckdb_v2.sql).
@@ -36,13 +36,13 @@ Para esse projeto, era necessário construir o menor número possível de tabela
 ## Como testar
 
 ### 1. Criar o banco
-Para criar o banco, é necessário ter o módulo do DuckDB para Python instalado. Com isso, basta executar o script [/scripts_insercao/00_criar_banco.py](00_criar_banco.py). Lembre-se, se já existir um arquivo chamado 'BancoNaoRelacional.db' na pasta do projeto, apague-o antes de executar esse script, pois pode causar incompatibilidades.
+Para criar o banco, é necessário ter o módulo do DuckDB para Python instalado. Com isso, basta executar o script [00_criar_banco.py](/scripts_insercao/00_criar_banco.py). Lembre-se, se já existir um arquivo chamado 'BancoNaoRelacional.db' na pasta do projeto, apague-o antes de executar esse script, pois pode causar incompatibilidades.
 
 ### 2. Popular o banco
-Agora, para popular o banco, é necessário executar o script [/scripts_insercao/01_inserir_dados.py](01_inserir_dados.py). Dessa forma, o banco já está criado e populado.
+Agora, para popular o banco, é necessário executar o script [01_inserir_dados.py](/scripts_insercao/01_inserir_dados.py). Dessa forma, o banco já está criado e populado.
 
 ### 3. Executar as consultas
-Para executar as queries, basta acessar o notebook [/queries_view.ipynb](queries_view.ipynb). Lá, todas as queries podem ser executadas e testadas, uma a uma.
+Para executar as queries, basta acessar o notebook [queries_view.ipynb](/queries_view.ipynb). Lá, todas as queries podem ser executadas e testadas, uma a uma.
 
 ## Consultas
 ### - [Query 1](queries/query1.sql): Desempenho Escolar e Remuneração de Egressos do IFB
