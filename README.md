@@ -1,4 +1,4 @@
-# Projeto de Banco Relacional - MC536
+# Projeto de Banco Não Relacional - MC536
 
 ## Visão Geral
 Alunos participantes:
