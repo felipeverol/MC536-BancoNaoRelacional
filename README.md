@@ -16,14 +16,14 @@ Foram usados os seguintes datasets para o projeto:
 
 OBS: os datasets em formato CSV estão compactados dentro de arquivos ZIP
 
-## Modelos Conceitual, Relacional e Físico
+## Modelos Conceitual, Lógico e Físico
 Aqui estão os modelos criados para o melhor entendimento de como deve ser o funcionamento do banco de dados:
 
 ### Modelo Conceitual
 ![Modelo Conceitual do Banco de Dados](modelos/modelo_conceitual.png) 
 
 ### Modelo Lógico
-![Modelo Relacional do Banco de Dados](modelos/modelo_logico.PNG)
+![Modelo Lógico do Banco de Dados](modelos/modelo_logico.PNG)
 
 ### Modelo Físico
 O SQL do modelo físico está no reposítorio, podendo ser encontrado no diretório [modelos/modelo_fisico_duckdb_v2.sql](modelos/modelo_fisico_duckdb_v2.sql).
